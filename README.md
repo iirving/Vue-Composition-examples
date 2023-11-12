@@ -1,9 +1,9 @@
 # a collection of Vue 3 simple apps demonstrating concepts
 
-## [Shop list : adding Vue to a index.html page](./shopp-list-embeded-vue/)
+## [Shop list : adding Vue to html page](./shopp-list-embeded-vue/)
 
-## [click counter with a html embeded in JS ](./click-counter-embeded-render)
+## [A click counter with a html embeded in JS ](./click-counter-embeded-render)
 
-## [click counter ](./click-counter/)
+## [A click counter with html in the html page ](./click-counter/)
 
-## [a list](./plan-picker/)
+## [A list app with a x-template in the html page, and data passed in via props ](./plan-picker/)
