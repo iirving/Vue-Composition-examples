@@ -1,7 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
-      plans: ["The Signle", "The Curious", "The Addict"],
+      plans: ["The Single", "The Curious", "The Addict"],
     };
   },
 })
