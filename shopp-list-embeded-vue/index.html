@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping List Vue embeded App</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div id="shopping-list">
+      <div class="header">
+        <h1>{{header}}</h1>
+        <button v-if="edting" @click="doEdit(false)" class="btn btn-cancel">
+          Cancel
+        </button>
+        <button v-else @click="doEdit(true)" class="btn btn-primary">
+          Add
+        </button>
+      </div>
+      <div v-if="edting" class="add-item-form">
+        <input
+          @keyup.enter="saveItem"
+          v-model="newItem"
+          type="text"
+          placeholder="Add an item"
+        />
+        <!-- {{newItem}} {{newItemHighPriorty}} -->
+        <label>
+          <input type="checkbox" v-model="newItemHighPriorty" /> High Priorty
+        </label>
+
+        <button
+          @click="saveItem"
+          :disabled="newItem.length < 5"
+          class="btn btn-primary"
+        >
+          Save Item
+        </button>
+      </div>
+
+      <p v-if="items.length === 0">No items in the list</p>
+      <ul>
+        <li
+          v-for="item in reverseItems"
+          :key="item.id"
+          :class="{strikeout: item.purchased, priorty: item.highPriorty}"
+          @click="togglePurchase(item)"
+        >
+          {{item.label}}
+        </li>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+      const shoppingList = Vue.createApp({
+        data() {
+          return {
+            header: "Shop list",
+            edting: false,
+            newItem: "",
+            newItemHighPriorty: false,
+            items: [
+              {
+                id: 1,
+                label: "1 kg of apples",
+                purchased: true,
+                highPriorty: false,
+              },
+              {
+                id: 30,
+                label: "1 kg of oranges",
+                purchased: true,
+                highPriorty: true,
+              },
+              {
+                id: 5,
+                label: "1 kg of bananas",
+                purchased: false,
+                highPriorty: true,
+              },
+            ],
+          };
+        },
+        computed: {
+          characterCount() {
+            return this.newItem.length;
+          },
+          reverseItems() {
+            return [...this.items].slice(0).reverse();
+          },
+        },
+        methods: {
+          saveItem() {
+            this.items.push({
+              id: this.items.length + 1,
+              label: this.newItem,
+              highPriorty: this.newItemHighPriorty,
+              purchased: false,
+            });
+            this.newItem = "";
+            this.newItemHighPriorty = false;
+          },
+          doEdit(editing) {
+            this.edting = editing;
+            this.newItem = "";
+          },
+          togglePurchase(item) {
+            item.purchased = !item.purchased;
+          },
+        },
+      }).mount("#shopping-list");
+    </script>
+  </body>
+</html>
+`
