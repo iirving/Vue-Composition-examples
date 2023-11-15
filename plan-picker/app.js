@@ -14,17 +14,15 @@
  * The Vue application instance.
  * @type {Object}
  */
-const app = Vue.createApp({
-  /**
-   * Returns the data object for the Vue component.
-   * @returns {Object} The data object containing the plans array.
-   */
-  data() {
-    return {
-      plans: ["The Single", "The Curious", "The Addict"],
-    };
-  },
-})
+const app = Vue.createApp({})
+  .component("plan-picker", {
+    template: "#plan-picker-template",
+    data() {
+      return {
+        plans: ["The Single", "The Curious", "The Addict"],
+      };
+    },
+  })
   .component("plan", {
     template: "#plan-template",
     props: {
