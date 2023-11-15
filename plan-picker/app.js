@@ -1,32 +1,28 @@
 /**
- * Vue application instance.
- * @typedef {Object} VueApp
- * @property {Function} component - Vue component function.
- * @property {Function} mount - Mounts the Vue app to a DOM element.
+ * Vue component for displaying a plan.
  */
-
+let PlanComponent = {
+  template: "#plan-template",
+  props: {
+    name: { type: String, required: true },
+  },
+};
 /**
- * Creates a new Vue application instance.
- * @function
- * @returns {VueApp} A new Vue application instance.
+ * PlanPickerComponent is a Vue component that displays a list of plans.
  */
-/**
- * The Vue application instance.
- * @type {Object}
- */
-const app = Vue.createApp({})
-  .component("plan-picker", {
-    template: "#plan-picker-template",
-    data() {
-      return {
-        plans: ["The Single", "The Curious", "The Addict"],
-      };
-    },
-  })
-  .component("plan", {
-    template: "#plan-template",
-    props: {
-      name: { type: String, required: true },
-    },
-  })
-  .mount("#app");
+let PlanPickerComponent = {
+  template: "#plan-picker-template",
+  components: {
+    plan: PlanComponent,
+  },
+  data() {
+    return {
+      plans: ["The Single", "The Curious", "The Addict"],
+    };
+  },
+};
+const app = Vue.createApp({
+  components: {
+    "plan-picker": PlanPickerComponent,
+  },
+}).mount("#app");
