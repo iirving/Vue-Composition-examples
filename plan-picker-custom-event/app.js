@@ -5,6 +5,12 @@ let PlanComponent = {
   template: "#plan-template",
   props: {
     name: { type: String, required: true },
+    selected: { type: Boolean, default: false },
+  },
+  methods: {
+    select() {
+      this.$emit("select", this.name);
+    },
   },
 };
 /**
@@ -17,8 +23,14 @@ let PlanPickerComponent = {
   },
   data() {
     return {
-      plans: ["The Single", "The Curious", "The Addict"],
+      plans: ["The Single", "The Curious", "The Addict", "another Hack"],
+      selectedPlan: null,
     };
+  },
+  methods: {
+    selectPlan(plan) {
+      this.selectedPlan = plan;
+    },
   },
 };
 const app = Vue.createApp({
