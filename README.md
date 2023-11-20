@@ -7,3 +7,5 @@
 ## [A click counter with html in the html page ](./click-counter/)
 
 ## [A list app with a x-template in the html page, and data passed in via props ](./plan-picker/)
+
+## [A more advance picker with communcation between child to parent ](./plan-picker-custom-event)
