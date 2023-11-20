@@ -1,7 +1,7 @@
 /**
  * Vue component for displaying a plan.
  *
- * @typedef {Object} PlanItemComponent
+ * @typedef {Object} PlanPickerItemComponent
  * @property {string} name - The name of the plan.
  * @property {boolean} selected - Indicates if the plan is selected.
  *
@@ -9,8 +9,8 @@
  * @fires PlanItemComponent#select
  */
 
-let PlanItemComponent = {
-  template: "#plan-template",
+let PlanPickerItemComponent = {
+  template: "#plan-picker-item-template",
   props: {
     name: { type: String, required: true },
     selected: { type: Boolean, default: false },
@@ -35,7 +35,7 @@ let PlanItemComponent = {
 let PlanPickerComponent = {
   template: "#plan-picker-template",
   components: {
-    PlanItem: PlanItemComponent,
+    PlanPickerItem: PlanPickerItemComponent,
   },
   data() {
     return {
