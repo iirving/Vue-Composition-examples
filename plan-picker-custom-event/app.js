@@ -1,7 +1,7 @@
 /**
  * Vue component for displaying a plan.
  */
-let PlanComponent = {
+let PlanItemComponent = {
   template: "#plan-template",
   props: {
     name: { type: String, required: true },
@@ -19,7 +19,7 @@ let PlanComponent = {
 let PlanPickerComponent = {
   template: "#plan-picker-template",
   components: {
-    plan: PlanComponent,
+    PlanItem: PlanItemComponent,
   },
   data() {
     return {

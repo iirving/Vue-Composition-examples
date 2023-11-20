@@ -22,12 +22,12 @@
 
     <script type="text/x-template" id="plan-picker-template">
       <div class="plans">
-        <plan
+        <plan-item
           v-for="plan in plans"
           :name="plan"
           :selected="plan === selectedPlan"
           v-on:select="selectPlan">
-      </plan>
+      </plan-item>
       </div>
     </script>
 
