@@ -49,8 +49,7 @@
         },
         data() {
           return {
-            user: null,
-            joined: null,
+            user: {},
           };
         },
         methods: {
@@ -59,11 +58,13 @@
               `https://api.github.com/users/${this.username}`
             );
             this.user = response.data;
-            this.joined = new Date(this.user.created_at).getFullYear();
           },
         },
 
         computed: {
+          joined() {
+            return new Date(this.user.created_at).getFullYear();
+          },
           userGitHubProfileUrl() {
             let url_prefix = "https://github.com/";
             return `${url_prefix}${this.username}`;
