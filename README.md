@@ -9,3 +9,5 @@
 ## [A list app with a x-template in the html page, and data passed in via props ](./plan-picker/)
 
 ## [A more advance picker with communcation between child to parent ](./plan-picker-custom-event)
+
+## [A simple slots Demo](./slots/)
