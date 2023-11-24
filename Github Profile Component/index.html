@@ -66,11 +66,11 @@
             return new Date(this.user.created_at).getFullYear();
           },
           userGitHubProfileUrl() {
-            let url_prefix = "https://github.com/";
+            const url_prefix = "https://github.com/";
             return `${url_prefix}${this.username}`;
           },
           userGitHubProfileFollowersUrl() {
-            let url_postfix = `?tab=followers`;
+            const url_postfix = `?tab=followers`;
             return `${this.userGitHubProfileUrl}${url_postfix}`;
           },
         },
