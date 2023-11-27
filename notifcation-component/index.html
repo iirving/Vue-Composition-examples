@@ -12,25 +12,45 @@
   <body>
     <div id="app" class="ui container">
       <h1>Notification Center</h1>
-
-      <!-- Notification Message Markup -->
-      <!-- Types: info, warning, error, success -->
-      <div class="ui info message">
-        <i class="close icon"></i>
-        <div class="header">You are eligible for a reward</div>
-        <p>Go to the <b>special offers</b> page to see now.</p>
-      </div>
+      <notification-message type="error" header="Oh No!">
+        <p>Sample Notifcation Message body</p>
+      </notification-message>
     </div>
 
-    <!-- Template for Notification Message -->
-    <script type="text/x-template" id="notification-message-template"></script>
+    <script type="text/x-template" id="notifcation-message-template">
+      <div :class="`ui ${type} message`" v-if="showNotifcation">
+        <i class="close icon" @click="closeNotifcation"></i>
+        <div class="header">{{header}}</div>
+        <slot></slot>
+      </div>
+    </script>
 
-    <!-- Import Vue.js -->
+    <script type="text/x-template" id="notification-message-template"></script>
     <script src="https://unpkg.com/vue@3"></script>
 
-    <!-- Your JavaScript Code :) -->
     <script>
-      Vue.createApp({}).mount("#app");
+      let NotificationMessageComponent = {
+        template: "#notifcation-message-template",
+        props: {
+          type: { type: String, required: true },
+          header: { type: String, required: true },
+        },
+        data() {
+          return {
+            showNotifcation: true,
+          };
+        },
+        computed: {},
+        methods: {
+          closeNotifcation() {
+            this.showNotifcation = false;
+          },
+        },
+      };
+
+      Vue.createApp({
+        components: { "notification-message": NotificationMessageComponent },
+      }).mount("#app");
     </script>
   </body>
 </html>
