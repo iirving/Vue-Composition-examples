@@ -22,7 +22,10 @@
         <p>Take a look at!</p>
       </notification-message>
       <notification-message type="warning" header="We should look into that!">
-        <p>As someone once said: <quote>Fascinating!</quote></p>
+        <p>As someone once said: Fascinating!</p>
+      </notification-message>
+      <notification-message>
+        <p>A default infomation notifcation</p>
       </notification-message>
     </div>
 
@@ -41,8 +44,8 @@
       let NotificationMessageComponent = {
         template: "#notifcation-message-template",
         props: {
-          type: { type: String, required: true },
-          header: { type: String, required: true },
+          type: { type: String, default: "info" },
+          header: { type: String, default: "Information" },
         },
         data() {
           return {
